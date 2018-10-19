@@ -6,3 +6,14 @@ let db = mongoose.connection;
 db.on('error', () => console.log('mongoose connection error'))
 
 db.once('open', () => console.log('mongoose connection successful'))
+
+let memoSchema = mongoose.Schema({
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    index: true,
+    required: true,
+    auto: true,
+  },
+  title: String,
+  url: String,
+})
