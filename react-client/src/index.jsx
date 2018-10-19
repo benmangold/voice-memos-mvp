@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import MemoList from './components/MemoList.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +11,10 @@ class App extends React.Component {
   }
 
   render() {
-    return(<div>HELLO WORLD</div>)
+    return(<div>
+        HELLO WORLD
+        <MemoList memoList={this.state.audioMemos}/>
+      </div>)
   }
 }
 
