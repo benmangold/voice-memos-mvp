@@ -17,3 +17,13 @@ let memoSchema = mongoose.Schema({
   title: String,
   url: String,
 })
+
+let Memo = mongoose.model('Memo', memoSchema)
+
+const addMemo = (title, url) => {
+  console.log('ADDING MEMO');
+  console.log (`${title} ${url}`)
+  Memo.collection.insert({ title: title, url: url });
+}
+
+module.exports.addMemo = addMemo;

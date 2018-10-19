@@ -19,7 +19,7 @@ app.get('/memos', (req, res) => {
 app.post('/memos', (req, res) => {
   console.log('POST')
   console.log(req.body.title)
-
+  db.addMemo(req.body.title, 'audio/Test.m4a')
   res.status(201).send()
 })
 
