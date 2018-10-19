@@ -9,8 +9,7 @@ class MemoList extends React.Component {
   render() {
     return (<div>
       { this.props.memoList.map(({ url, title, _id }, index, collection) => {
-        console.log('MEMO ID ' + _id)
-        return <div key={ index }>{ title }
+        return <div key={ index }>{ title }<br/>
                   <audio controls>
                     <source src={ url } type="audio/mpeg"></source>
                   </audio>

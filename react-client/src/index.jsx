@@ -34,7 +34,6 @@ class App extends React.Component {
       title: this.state.value
     }).then((response) => {
       console.log('Successful Post!')
-      console.log(response);
       this.getMemos()
     }).catch((error) => {
       console.log('Error Posting')
@@ -46,7 +45,6 @@ class App extends React.Component {
     axios.get('/memos')
     .then((response) => {
       console.log('Succesful Get!')
-      console.log(response);
       this.setState({
         audioMemos: response.data
       })
@@ -60,8 +58,7 @@ class App extends React.Component {
     console.log('DELETE ' + id)
     axios.delete('/memos', { params: { id:id } })
     .then((response) => {
-      console.log('Succesful Get!')
-      console.log(response);
+      console.log('Succesful Delete!')
       this.getMemos()
     }).catch((err) => {
       console.log('Error Deleting')
@@ -80,7 +77,7 @@ class App extends React.Component {
         <input type="submit" value='Submit' />
         </form>
 
-        <button onClick= { this.getMemos } >Get Memos</button>
+        {/* <button onClick= { this.getMemos } >Get Memos</button> */}
         <MemoList 
           memoList={ this.state.audioMemos }
           onDelete = { this.handleDelete }
