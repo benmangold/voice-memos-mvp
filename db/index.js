@@ -24,7 +24,7 @@ let Memo = mongoose.model('Memo', memoSchema)
 const addMemo = (title, url) => {
   console.log('ADDING MEMO');
   console.log (`${title} ${url}`)
-  Memo.collection.insert({ title: title, url: url, deleted: false });
+  Memo.collection.insertOne({ title: title, url: url, deleted: false });
 }
 
 const getMemos = (cb) => {
