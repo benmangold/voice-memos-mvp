@@ -7,7 +7,11 @@ class MemoList extends React.Component {
   }
 
   render() {
-    return (<div>Memo List</div>);
+    return (<div>
+      { this.props.memoList.map(({ url, title }, index, collection) => {
+        return <div key={ index }>{ title } <audio controls><source src={ url } type="audio/mpeg"></source></audio></div>
+      })}
+      </div>);
   }
 }
 

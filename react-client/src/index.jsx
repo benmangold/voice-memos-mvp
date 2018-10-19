@@ -2,18 +2,20 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import MemoList from './components/MemoList.jsx'
 
+const TEST_AUDIO = {url: 'audio/Test.m4a', title: 'testMemo'}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      audioMemos : [{url: 'http://127.0.0.1:3000/audio/Test.m4a', title: 'testMemo'}]
+      audioMemos : [ TEST_AUDIO, TEST_AUDIO, TEST_AUDIO]
     }
   }
 
   render() {
     return(<div>
         HELLO WORLD
-        <MemoList memoList={this.state.audioMemos}/>
+        <MemoList memoList={ this.state.audioMemos}/>
       </div>)
   }
 }
