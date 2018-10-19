@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const parser = require('body-parser')
 const db = require('../db')
+const url = require('url')
 
 let app = express();
 app.use(parser.json());
@@ -30,7 +31,9 @@ app.post('/memos', (req, res) => {
 
 app.delete('/memos', (req, res) => {
   console.log('DELETE')
-  db.deleteMemo(req.body.id, (err, updated) => {
+  let parsedUrl = url.parse(req.url, true);
+  console.log(parsedUrl.query.id)
+  db.deleteMemo(parsedUrl.query.id, (err, updated) => {
     if (err) res.status(500).send()
     res.send(updated)
   })

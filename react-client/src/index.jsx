@@ -15,6 +15,7 @@ class App extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.getMemos = this.getMemos.bind(this);
   }
 
@@ -36,7 +37,7 @@ class App extends React.Component {
       console.log(response);
       this.getMemos()
     }).catch((error) => {
-      console.log('Error')
+      console.log('Error Posting')
       console.log(err)
     })
   }
@@ -50,12 +51,23 @@ class App extends React.Component {
         audioMemos: response.data
       })
     }).catch((err) => {
-      console.log('Error')
+      console.log('Error Getting')
       console.log(err)
     })
   }
 
-
+  handleDelete(id) {
+    console.log('DELETE ' + id)
+    axios.delete('/memos', { params: { id:id } })
+    .then((response) => {
+      console.log('Succesful Get!')
+      console.log(response);
+      this.getMemos()
+    }).catch((err) => {
+      console.log('Error Deleting')
+      console.log(err)
+    })
+  }
 
   render() {
     return(<div>
@@ -71,6 +83,7 @@ class App extends React.Component {
         <button onClick= { this.getMemos } >Get Memos</button>
         <MemoList 
           memoList={ this.state.audioMemos }
+          onDelete = { this.handleDelete }
         />
       </div>)
   }
