@@ -13,7 +13,7 @@ let memoSchema = mongoose.Schema({
     index: true,
     required: true,
     auto: true,
-  },
+  }, 
   title: String,
   url: String,
   deleted: Boolean
@@ -23,18 +23,26 @@ let Memo = mongoose.model('Memo', memoSchema)
 
 const addMemo = (title, url) => {
   console.log('ADDING MEMO');
-  console.log (`${title} ${url}`)
   Memo.collection.insertOne({ title: title, url: url, deleted: false });
 }
 
 const getMemos = (cb) => {
-  Memo.collection.find({}).toArray( (err, coll) => {
+  Memo.collection.find({ deleted: false })
+  .sort({_id: -1})
+  .toArray( (err, coll) => {
     if (err) cb(err, null)
-    console.log('FOUND MEMOS')
-    console.log(coll);
     cb(null, JSON.stringify(coll));
+  })
+}
+
+const deleteMemo = (id ,cb) => {
+  let updateObj = {deleted: true}
+  Memo.findByIdAndUpdate(id, updateObj, {new: true}, (err, model) => {
+    if(err) cb(err, null)
+    cb(null,model);
   })
 }
 
 module.exports.addMemo = addMemo;
 module.exports.getMemos = getMemos;
+module.exports.deleteMemo = deleteMemo

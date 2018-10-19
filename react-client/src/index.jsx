@@ -10,12 +10,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      audioMemos : [ TEST_AUDIO, TEST_AUDIO, TEST_AUDIO],
+      audioMemos : [],
       value: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getMemos = this.getMemos.bind(this);
+  }
+
+  componentDidMount() {
+    this.getMemos();
   }
 
   handleChange(event) {
@@ -30,7 +34,7 @@ class App extends React.Component {
     }).then((response) => {
       console.log('Successful Post!')
       console.log(response);
-
+      this.getMemos()
     }).catch((error) => {
       console.log('Error')
       console.log(err)

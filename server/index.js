@@ -28,6 +28,14 @@ app.post('/memos', (req, res) => {
   res.status(201).send()
 })
 
+app.delete('/memos', (req, res) => {
+  console.log('DELETE')
+  db.deleteMemo(req.body.id, (err, updated) => {
+    if (err) res.status(500).send()
+    res.send(updated)
+  })
+})
+
 app.listen(3000, () => {
   console.log('app is listening')
 })
