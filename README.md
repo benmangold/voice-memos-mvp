@@ -1,3 +1,25 @@
+# Voice Memos
+## by Ben Mangold
+
+This application allows the user to add voicememos to a database, and then access those memos as they are rendered dynamically in the application.
+
+# Running Dev Enviornment
+
+## $ npm run server-dev
+## $ npm run react-dev
+
+
+
+
+
+
+
+
+
+
+
+
+
 # MVP Solo Project
 
 You have ~24 hours to produce something compelling using the skills you've honed over the past five weeks.
