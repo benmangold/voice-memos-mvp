@@ -14,6 +14,11 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 
 app.get('/memos', (req, res) => {
   console.log('GET')
+  db.getMemos((err, memoList) => {
+    console.log('GOT MEMOS')
+    if (err) res.status(500).send(err) 
+    res.send(memoList)
+  });
 })
 
 app.post('/memos', (req, res) => {

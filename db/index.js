@@ -16,6 +16,7 @@ let memoSchema = mongoose.Schema({
   },
   title: String,
   url: String,
+  deleted: Boolean
 })
 
 let Memo = mongoose.model('Memo', memoSchema)
@@ -23,7 +24,17 @@ let Memo = mongoose.model('Memo', memoSchema)
 const addMemo = (title, url) => {
   console.log('ADDING MEMO');
   console.log (`${title} ${url}`)
-  Memo.collection.insert({ title: title, url: url });
+  Memo.collection.insert({ title: title, url: url, deleted: false });
+}
+
+const getMemos = (cb) => {
+  Memo.collection.find({}).toArray( (err, coll) => {
+    if (err) cb(err, null)
+    console.log('FOUND MEMOS')
+    console.log(coll);
+    cb(null, JSON.stringify(coll));
+  })
 }
 
 module.exports.addMemo = addMemo;
+module.exports.getMemos = getMemos;
