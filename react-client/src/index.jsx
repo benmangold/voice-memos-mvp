@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import MemoList from './components/MemoList.jsx'
+import axios from 'axios';
+
 
 const TEST_AUDIO = {url: 'audio/Test.m4a', title: 'testMemo'}
 
@@ -23,6 +25,9 @@ class App extends React.Component {
     event.preventDefault();
     console.log('A name was submitted: ' + this.state.value);
 
+    axios.post('/memos', {
+      title: this.state.value
+    })
   }
 
   render() {
