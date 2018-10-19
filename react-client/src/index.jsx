@@ -8,14 +8,38 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      audioMemos : [ TEST_AUDIO, TEST_AUDIO, TEST_AUDIO]
+      audioMemos : [ TEST_AUDIO, TEST_AUDIO, TEST_AUDIO],
+      value: 'val'
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log('A name was submitted: ' + this.state.value);
+
   }
 
   render() {
     return(<div>
-        HELLO WORLD
-        <MemoList memoList={ this.state.audioMemos}/>
+        Voice Memos
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input type="text" name="name" onChange={this.handleChange} />
+          </label>
+          <input type="submit" value='Submit' />
+    </form>
+
+
+        <MemoList 
+          memoList={ this.state.audioMemos }
+        />
       </div>)
   }
 }

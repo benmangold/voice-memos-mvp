@@ -6,6 +6,13 @@ let app = express();
 app.use(express.static(path.join(__dirname,'../public')))
 app.use(express.static(__dirname + '/../react-client/dist'));
 
+app.get('/memos', (req, res) => {
+
+})
+
+app.post('/memos', (req, res) => {
+  
+})
 
 app.listen(3000, () => {
   console.log('app is listening')
