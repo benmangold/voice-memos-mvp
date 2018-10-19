@@ -1,0 +1,29 @@
+{
+  "name": "hrnyc18-mvp",
+  "version": "1.0.0",
+  "description": "You have ~24 hours to produce something compelling using the skills you've honed over the past five weeks.",
+  "main": "server/index.js",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benmangold/hrnyc18-mvp.git"
+  },
+  "keywords": [
+    "voice",
+    "memo",
+    "mvp"
+  ],
+  "author": "Ben Mangold",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benmangold/hrnyc18-mvp/issues"
+  },
+  "homepage": "https://github.com/benmangold/hrnyc18-mvp#readme"
+}
