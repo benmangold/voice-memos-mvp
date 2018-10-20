@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('/../react-client/dist'));
 }
 
-pp.get('*', (request, response) => {
+app.get('*', (request, response) => {
 	response.sendFile(path.join(__dirname, '/../react-client/dist', 'index.html'));
 });
 
