@@ -27,12 +27,9 @@ app.get('/memos', (req, res) => {
   });
 })
 
-app.post('/memos',parser.json(), (req, res) => {
+// what to do with this? test method for crud operations
+app.post('/memos/test',parser.json(), (req, res) => {
   console.log('POST')
-  console.log(req.on('data'), (data) => {
-    console.log('data stream')
-    console.log(data);
-  })
   console.log(req.body.audio);
   // db.addMemo(req.body.title, 'audio/Test.m4a')
   res.status(201).send()
@@ -44,8 +41,10 @@ app.post('/memos/blob',  type, (req, res) => {
   console.log(req.body);
   console.log(req.file);
 
-  db.addMemo(req.file.originalname, `audio/${ req.file.filename }`)
-  res.status(201).send()
+  db.addMemo(req.file.originalname, `audio/${ req.file.filename }`, (err, data) => {
+    if (err) res.status(500).send();
+    res.status(201).send()
+  })
 })
 
 app.delete('/memos', (req, res) => {

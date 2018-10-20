@@ -53,4 +53,4 @@ const deleteMemo = (id ,cb) => {
 
 module.exports.addMemo = addMemo;
 module.exports.getMemos = getMemos;
-module.exports.deleteMemo = deleteMemo
+module.exports.deleteMemo = deleteMemo;

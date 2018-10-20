@@ -22,7 +22,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getMemos();
+    this.getMemos()
+    setInterval(this.getMemos, 3000)
   }
 
   handleChange(event) {
@@ -71,19 +72,19 @@ class App extends React.Component {
   render() {
     return(<div>
       Voice Memos
-      <form onSubmit={this.handleSubmit}>
+      {/* <form onSubmit={this.handleSubmit}>
         <label>
           Name:
           <input type="text" name="name" onChange={this.handleChange} />
         </label>
         <input type="submit" value='Submit' />
-        </form>
+        </form> */}
         {/* <button onClick= { this.getMemos } >Get Memos</button> */}
         <MemoList 
           memoList={ this.state.audioMemos }
           onDelete = { this.handleDelete }
-          />
-          <AudioRecorder/>
+        />
+        <AudioRecorder getMemos={this.getMemos}/>
       </div>)
   }
 }
