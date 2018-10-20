@@ -32,11 +32,11 @@ class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('A name was submitted: ' + this.state.value);
+    // console.log('A name was submitted: ' + this.state.value);
     axios.post('/memos', {
       title: this.state.value 
     }).then((response) => {
-      console.log('Successful Post!')
+      // console.log('Successful Post!')
       this.getMemos()
     }).catch((error) => {
       console.log('Error Posting')
