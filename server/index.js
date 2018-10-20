@@ -4,7 +4,7 @@ const parser = require('body-parser')
 const db = require('../db')
 const url = require('url')
 const multer = require('multer');
-var upload = multer({ dest: __dirname + '../public/audio/' });
+var upload = multer({ dest: __dirname + '/../public/audio/' });
 var type = upload.single('upl');
 const fs = require('fs');
 
@@ -41,9 +41,17 @@ app.post('/memos',parser.json(), (req, res) => {
 // we need to parse raw 
 app.post('/memos/blob',  type, (req, res) => {
   console.log('POST BLOB')
-
+  console.log(req.body);
   console.log(req.file);
-
+  // console.log(req)
+  // fs.writeFile(req.files[0].originalname, req.files[0].buffer, (err) => {
+  //   if (err) {
+  //       console.log('Error: ', err);
+  //       res.status(500).send('An error occurred: ' + err.message);
+  //   } else {
+  //       res.status(200).send('ok');
+  //   }
+  // });
   // db.addMemo(req.body.title, 'audio/Test.m4a')
   res.status(201).send()
 })
