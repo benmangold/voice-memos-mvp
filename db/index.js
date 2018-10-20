@@ -2,9 +2,7 @@ let mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/memos')
 
 let db = mongoose.connection;
-
 db.on('error', () => console.log('mongoose connection error'))
-
 db.once('open', () => console.log('mongoose connection successful'))
 
 let memoSchema = mongoose.Schema({
@@ -21,11 +19,18 @@ let memoSchema = mongoose.Schema({
 
 let Memo = mongoose.model('Memo', memoSchema)
 
-const addMemo = (title, url) => {
-  console.log('ADDING MEMO');
-  Memo.collection.insertOne({ title: title, url: url, deleted: false });
+// C
+const addMemo = (title, url, cb) => {
+  const memo = { title: title, url: url, deleted: false }
+  try{
+    Memo.collection.insertOne(memo);
+  } catch (err){
+    cb(err, null)
+  }
+  cb(null, JSON.stringify(memo))
 }
 
+// R
 const getMemos = (cb) => {
   Memo.collection.find({ deleted: false })
   .sort({_id: -1})
@@ -35,6 +40,9 @@ const getMemos = (cb) => {
   })
 }
 
+// TODO U - Update title
+
+// U D
 const deleteMemo = (id ,cb) => {
   let updateObj = {deleted: true}
   Memo.findByIdAndUpdate(id, updateObj, {new: true}, (err, model) => {
