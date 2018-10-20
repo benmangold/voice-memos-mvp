@@ -23,7 +23,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getMemos()
-    // setInterval(this.getMemos, 3000)
+    setInterval(this.getMemos, 3000)
   }
 
   handleChange(event) {
@@ -87,10 +87,10 @@ class App extends React.Component {
     return(<div>
       Voice Memos
       {/* <form onSubmit={this.handleSubmit}> */}
-        <label>
+        {/* <label>
           Name:
           <input type="text" name="name" onChange={this.handleChange} />
-        </label>
+        </label> */}
         {/* <input type="submit" value='Submit' /> */}
         {/* </form> */}
         {/* <button onClick= { this.getMemos } >Get Memos</button> */}
