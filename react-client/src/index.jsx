@@ -51,9 +51,9 @@ class App extends React.Component {
     .then((response) => {
       console.log('Succesful Get!')
       console.log(response);
-      this.setState({
-        audioMemos: []
-      })
+      // this.setState({
+      //   audioMemos: []
+      // })
       this.setState({
         audioMemos: response.data
       })
