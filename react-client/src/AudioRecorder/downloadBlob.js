@@ -1,5 +1,5 @@
 // trigger a browser file download of binary data
-import Axios from 'axios';
+import axios from 'axios';
 
 export default function downloadBlob(blob, filename) {
     var url = window.URL.createObjectURL(blob);
@@ -12,7 +12,36 @@ export default function downloadBlob(blob, filename) {
     // link.click();
     // debugger;
 
-    // post blob to server 
+    
+    var myBlob = new Blob(["This is my blob content"], {type : "text/plain"});
+    console.log(blob);
+    
+    // here unnecessary - just for testing if it can be read from local storage
+    // localStorage.myfile = myBlob;
+    
+    var fd = new FormData();
+    fd.append('upl', blob, 'blobby.wav');
+    
+    fetch('/memos/blob',
+    {
+        method: 'post',
+        body: fd
+    }); 
+
+
+    // let data = new FormData();
+    // data.append('file', blob);
+    
+    // // debugger;
+    
+    // // post blob to server 
+    // axios.post('/memos/blob', {data: data, enctype: 'multipart/form-data'}).then((response) => {
+    //     console.log('Successful Post!')
+    //   }).catch((error) => {
+    //     console.log('Error Posting')
+    //     console.log(error)
+    //   })
+    
 
     return link;
 }

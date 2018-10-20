@@ -3,9 +3,14 @@ const path = require('path');
 const parser = require('body-parser')
 const db = require('../db')
 const url = require('url')
+const multer = require('multer');
+var upload = multer({ dest: __dirname + '../public/audio/' });
+var type = upload.single('upl');
+const fs = require('fs');
+
 
 let app = express();
-app.use(parser.json());
+// app.use(parser.json());
 
 // audio store
 app.use(express.static(path.join(__dirname,'../public')))
@@ -22,10 +27,23 @@ app.get('/memos', (req, res) => {
   });
 })
 
-app.post('/memos', (req, res) => {
+app.post('/memos',parser.json(), (req, res) => {
   console.log('POST')
-  console.log(req.body.title)
-  console.log(req.body.blob);
+  console.log(req.on('data'), (data) => {
+    console.log('data stream')
+    console.log(data);
+  })
+  console.log(req.body.audio);
+  // db.addMemo(req.body.title, 'audio/Test.m4a')
+  res.status(201).send()
+})
+
+// we need to parse raw 
+app.post('/memos/blob',  type, (req, res) => {
+  console.log('POST BLOB')
+
+  console.log(req.file);
+
   // db.addMemo(req.body.title, 'audio/Test.m4a')
   res.status(201).send()
 })
