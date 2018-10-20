@@ -20,9 +20,7 @@ app.use(express.static(path.join(__dirname,'../public')))
 app.use(express.static(__dirname + '/../react-client/dist'));
 
 app.get('/memos', (req, res) => {
-  console.log('GET')
   db.getMemos((err, memoList) => {
-    console.log('GOT MEMOS')
     if (err) res.status(500).send(err) 
     res.send(memoList)
   });
@@ -30,7 +28,6 @@ app.get('/memos', (req, res) => {
 
 // what to do with this? test method for crud operations
 app.post('/memos/test',jsonParser, (req, res) => {
-  console.log('POST')
   console.log(req.body.audio);
   // db.addMemo(req.body.title, 'audio/Test.m4a')
   res.status(201).send()
@@ -38,7 +35,6 @@ app.post('/memos/test',jsonParser, (req, res) => {
 
 // we need to parse raw 
 app.post('/memos/blob',  type, (req, res) => {
-  console.log('POST BLOB')
   console.log(req.body);
   console.log(req.file);
 
@@ -55,7 +51,6 @@ app.post('/memos/blob',  type, (req, res) => {
 // })
 
 app.delete('/memos', (req, res) => {
-  console.log('DELETE')
   let parsedUrl = url.parse(req.url, true);
   console.log(parsedUrl.query.id)
   db.deleteMemo(parsedUrl.query.id, (err, updated) => {
@@ -64,6 +59,6 @@ app.delete('/memos', (req, res) => {
   })
 })
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('app is listening')
 })
