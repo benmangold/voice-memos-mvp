@@ -5,7 +5,6 @@ import axios from 'axios';
 
 import AudioRecorder from './AudioRecorder/AudioRecorder.js'
 
-
 const TEST_AUDIO = {url: 'audio/Test.m4a', title: 'testMemo'}
 
 class App extends React.Component {
@@ -45,11 +44,8 @@ class App extends React.Component {
   }
   
   getMemos() {
-   
-    console.log('getting memos')
-    axios.get('/memos')
+       axios.get('/memos')
     .then((response) => {
-      console.log('Succesful Get!')
       console.log(response);
       // this.setState({
       //   audioMemos: []
