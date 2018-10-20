@@ -1,6 +1,6 @@
 let mongoose = require('mongoose');
 // mongoose.connect(process.env.DB_PROVIDER || 'mongodb://127.0.0.1:27017/memos')
-mongoose.connect(process.env.DB_PROVIDER || 'mongodb://btm:hackreactor18@ds215822.mlab.com:15822/repos')
+mongoose.connect(process.env.DB_PROVIDER || 'mongodb://btm:hrnyc18@ds123896.mlab.com:23896/memos')
 
 
 let db = mongoose.connection;
@@ -37,6 +37,7 @@ const getMemos = (cb) => {
   Memo.collection.find({ deleted: false })
   .sort({_id: -1})
   .toArray( (err, coll) => {
+    console.log(coll)
     if (err) cb(err, null)
     cb(null, JSON.stringify(coll));
   })
