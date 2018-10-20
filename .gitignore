@@ -34,4 +34,4 @@ bower_components/
 .floo
 .flooignore
 
-public/audio
+public/audio/*
