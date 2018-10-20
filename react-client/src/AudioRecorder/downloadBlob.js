@@ -1,10 +1,6 @@
 // trigger a browser file download of binary data
 import axios from 'axios';
 
-const postBlobToServer = function(blob, cb) {
-
-}
-
 export default function downloadBlob(blob, filename) {
     var url = window.URL.createObjectURL(blob);
     // var click = document.createEvent('Event');
@@ -15,10 +11,10 @@ export default function downloadBlob(blob, filename) {
     // link.dispatchEvent(click);
     // link.click();
 
-    // postBlobToServer(blob)
     var fd = new FormData();
     fd.append('upl', blob, 'blobby.wav');
     
     fetch('/memos/blob', { method: 'post', body: fd })
+
     return link;
 }

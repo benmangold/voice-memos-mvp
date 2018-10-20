@@ -84,7 +84,7 @@ class App extends React.Component {
           memoList={ this.state.audioMemos }
           onDelete = { this.handleDelete }
         />
-        <AudioRecorder getMemos={this.getMemos}/>
+        <AudioRecorder getMemos={ this.getMemos }/>
       </div>)
   }
 }
