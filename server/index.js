@@ -11,6 +11,7 @@ const fs = require('fs');
 
 let app = express();
 // app.use(parser.json());
+let jsonParser = parser.json()
 
 // audio store
 app.use(express.static(path.join(__dirname,'../public')))
@@ -28,7 +29,7 @@ app.get('/memos', (req, res) => {
 })
 
 // what to do with this? test method for crud operations
-app.post('/memos/test',parser.json(), (req, res) => {
+app.post('/memos/test',jsonParser, (req, res) => {
   console.log('POST')
   console.log(req.body.audio);
   // db.addMemo(req.body.title, 'audio/Test.m4a')
@@ -46,6 +47,12 @@ app.post('/memos/blob',  type, (req, res) => {
     res.status(201).send()
   })
 })
+
+// app.post('/memos/title', jsonParser, (req, res) => {
+//   console.log('POST Update Memo Title')
+//   console.log(req.body)
+//   // db.updateTitle();
+// })
 
 app.delete('/memos', (req, res) => {
   console.log('DELETE')

@@ -14,6 +14,7 @@ class MemoList extends React.Component {
                     <source src={ url } type="audio/mpeg"></source>
                   </audio>
                   <button onClick= { () => { this.props.onDelete(_id) } } >Delete</button>
+                  {/* <button onClick= { () => { this.props.onEditTitle(_id) } } >Edit Title</button> */}
                 </div>
       })}
       </div>);

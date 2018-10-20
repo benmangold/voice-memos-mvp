@@ -23,7 +23,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getMemos()
-    setInterval(this.getMemos, 3000)
+    // setInterval(this.getMemos, 3000)
   }
 
   handleChange(event) {
@@ -45,6 +45,7 @@ class App extends React.Component {
   }
   
   getMemos() {
+    console.log('getting memos')
     axios.get('/memos')
     .then((response) => {
       console.log('Succesful Get!')
@@ -58,7 +59,6 @@ class App extends React.Component {
   }
 
   handleDelete(id) {
-    console.log('DELETE ' + id)
     axios.delete('/memos', { params: { id:id } })
     .then((response) => {
       console.log('Succesful Delete!')
@@ -69,20 +69,35 @@ class App extends React.Component {
     })
   }
 
+  // handleEditTitle(id) {
+  //   console.log('Handling Edit forsdf ' + id)
+  //   axios.post('/memos/title', {
+  //     id: id,
+  //     title: this.state.value
+  //   }).then((response) => {
+  //     console.log('Successful Post!')
+  //     // this.getMemos()
+  //   }).catch((error) => {
+  //     console.log('Error Posting')
+  //     console.log(error)
+  //   })
+  // }
+
   render() {
     return(<div>
       Voice Memos
-      {/* <form onSubmit={this.handleSubmit}>
+      {/* <form onSubmit={this.handleSubmit}> */}
         <label>
           Name:
           <input type="text" name="name" onChange={this.handleChange} />
         </label>
-        <input type="submit" value='Submit' />
-        </form> */}
+        {/* <input type="submit" value='Submit' /> */}
+        {/* </form> */}
         {/* <button onClick= { this.getMemos } >Get Memos</button> */}
         <MemoList 
           memoList={ this.state.audioMemos }
           onDelete = { this.handleDelete }
+          // onEditTitle = { this.handleEditTitle }
         />
         <AudioRecorder getMemos={ this.getMemos }/>
       </div>)
