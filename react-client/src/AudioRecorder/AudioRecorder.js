@@ -38,7 +38,13 @@ var AudioRecorder = /** @class */ (function (_super) {
                 audioData: null,
             });
         };
-        _this.onDownloadClick = function () { return downloadBlob(_this.state.audioData, _this.props.filename); };
+        _this.onDownloadClick = function () { 
+            console.log('onDownloadClick')
+            let link =  downloadBlob(_this.state.audioData, _this.props.filename); 
+            console.log(link)
+            return link
+        
+        };
         _this.onButtonClick = function (event) {
             if (_this.state.audioData) {
                 if (_this.state.isPlaying) {
