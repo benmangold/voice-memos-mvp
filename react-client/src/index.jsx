@@ -45,6 +45,9 @@ class App extends React.Component {
   }
   
   getMemos() {
+    this.setState({
+      audioMemos: []
+    })
     console.log('getting memos')
     axios.get('/memos')
     .then((response) => {
