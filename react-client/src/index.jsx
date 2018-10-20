@@ -3,6 +3,8 @@ import ReactDom from 'react-dom';
 import MemoList from './components/MemoList.jsx'
 import axios from 'axios';
 
+import AudioRecorder from './AudioRecorder/AudioRecorder.js'
+
 
 const TEST_AUDIO = {url: 'audio/Test.m4a', title: 'testMemo'}
 
@@ -31,13 +33,13 @@ class App extends React.Component {
     event.preventDefault();
     console.log('A name was submitted: ' + this.state.value);
     axios.post('/memos', {
-      title: this.state.value
+      title: this.state.value 
     }).then((response) => {
       console.log('Successful Post!')
       this.getMemos()
     }).catch((error) => {
       console.log('Error Posting')
-      console.log(err)
+      console.log(error)
     })
   }
   
@@ -76,12 +78,12 @@ class App extends React.Component {
         </label>
         <input type="submit" value='Submit' />
         </form>
-
         {/* <button onClick= { this.getMemos } >Get Memos</button> */}
         <MemoList 
           memoList={ this.state.audioMemos }
           onDelete = { this.handleDelete }
-        />
+          />
+          <AudioRecorder/>
       </div>)
   }
 }
