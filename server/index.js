@@ -43,16 +43,8 @@ app.post('/memos/blob',  type, (req, res) => {
   console.log('POST BLOB')
   console.log(req.body);
   console.log(req.file);
-  // console.log(req)
-  // fs.writeFile(req.files[0].originalname, req.files[0].buffer, (err) => {
-  //   if (err) {
-  //       console.log('Error: ', err);
-  //       res.status(500).send('An error occurred: ' + err.message);
-  //   } else {
-  //       res.status(200).send('ok');
-  //   }
-  // });
-  // db.addMemo(req.body.title, 'audio/Test.m4a')
+
+  db.addMemo(req.file.originalname, `audio/${ req.file.filename }`)
   res.status(201).send()
 })
 
