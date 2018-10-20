@@ -19,6 +19,14 @@ app.use(express.static(path.join(__dirname,'../public')))
 // client app
 app.use(express.static(__dirname + '/../react-client/dist'));
 
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('/../react-client/dist'));
+}
+
+pp.get('*', (request, response) => {
+	response.sendFile(path.join(__dirname, '/../react-client/dist', 'index.html'));
+});
+
 app.get('/memos', (req, res) => {
   db.getMemos((err, memoList) => {
     if (err) res.status(500).send(err) 

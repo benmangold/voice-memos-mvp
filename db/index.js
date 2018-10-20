@@ -1,6 +1,6 @@
 let mongoose = require('mongoose');
 // mongoose.connect(process.env.DB_PROVIDER || 'mongodb://127.0.0.1:27017/memos')
-mongoose.connect(process.env.DB_PROVIDER || 'mongodb://btm:hackreactor18@ds215822.mlab.com:15822/memos')
+mongoose.connect(process.env.DB_PROVIDER || 'mongodb://btm:hackreactor18@ds215822.mlab.com:15822/repos')
 
 
 let db = mongoose.connection;
