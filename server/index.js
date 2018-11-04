@@ -23,10 +23,6 @@ if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('/../react-client/dist'));
 }
 
-// app.get('*', (request, response) => {
-// 	response.sendFile(path.join(__dirname, '/../react-client/dist', 'index.html'));
-// });
-
 app.get('/memos', (req, res) => {
   db.getMemos((err, memoList) => {
     if (err) res.status(500).send(err) 

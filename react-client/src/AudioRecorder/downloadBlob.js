@@ -10,7 +10,8 @@ export default function downloadBlob(blob, filename) {
     // link.download = filename;
     // link.dispatchEvent(click);
     // link.click();
-
+    
+    debugger;
     var fd = new FormData();
     fd.append('upl', blob, 'blobby.wav');
     
