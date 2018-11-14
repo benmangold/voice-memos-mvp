@@ -1,6 +1,8 @@
 # Voice Memos
 ## by Ben Mangold
 
+![Gif Demonstration](https://www.dropbox.com/s/fur1h2u1zj7o84s/vm-mvp-screencap.gif)
+
 React - Node.js - MongoDb
 
 A MVP demonstration of a full-stack voice memo application
