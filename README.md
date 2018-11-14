@@ -1,7 +1,11 @@
 # Voice Memos
 ## by Ben Mangold
 
-[Demonstration](https://www.dropbox.com/s/9ieo7c27ytfscw7/vm-mvp-screencap.mov?dl=0)
+[Video Demonstration](https://www.dropbox.com/s/9ieo7c27ytfscw7/vm-mvp-screencap.mov?dl=0)
+
+[Trello Board](https://trello.com/b/cu52aEnq/vm-voicememos)
+
+[Client Dev](https://github.com/benmangold/voice-memos-client)
 
 React - Node.js - MongoDb
 
@@ -15,6 +19,10 @@ Audio recording and WAV encoding occurs in-browser
 https://floating-ocean-16339.herokuapp.com/
 
 # Running Locally in Dev Enviornment
+
+Ensure mongoDB is available locally at mongodb://127.0.0.1:27017/
+
+[Install MongoDB on Mac](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
 
 ## $ npm run server-dev
 ## $ npm run react-dev
