@@ -19,8 +19,12 @@ Ensure mongoDB is available locally at mongodb://127.0.0.1:27017/
 
 [Install MongoDB on Mac](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
 
+## from project directory, 
+## $ npm install
+##run these cmds in separate terminals
 ## $ npm run server-dev
 ## $ npm run react-dev
+## visit http://127.0.0.1:5000/
 
 # Further Development 
 
